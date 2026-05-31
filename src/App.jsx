@@ -27,7 +27,7 @@ const WORK_PROJECTS = {
 
 const ALL_PROJECTS = [...WORK_PROJECTS.live, ...WORK_PROJECTS.upcoming];
 
-// MAIN APP COMPONENT (handles navigation and page state)
+// MAIN APP COMPONENT
 export default function Portfolio() {
   const [active, setActive] = useState("Home");
   const [menuOpen, setMenuOpen] = useState(false);
@@ -62,7 +62,7 @@ export default function Portfolio() {
     }
   };
 
-  // CONTACT FORM
+  // CONTACT ME FORM
   const handleSubmit = (e) => {
     e.preventDefault();
     const { firstName, lastName, email, message } = formData;
@@ -169,6 +169,7 @@ export default function Portfolio() {
           text-align: center;
         }
 
+        /* Responsive breakpoints */
         @media (max-width: 768px) {
           .desktop-nav-links { display: none !important; }
           .hamburger-btn { display: flex !important; }
@@ -178,8 +179,7 @@ export default function Portfolio() {
           .works-row { flex-direction: column !important; align-items: center !important; }
           .section-pad { padding: 50px 20px !important; }
           .about-grid { flex-direction: column !important; align-items: center !important; }
-          .about-img { width: 100% !important; display: flex; justify-content: center; }
-          .about-img img { width: 220px !important; height: auto !important; }
+          .about-img-inner { max-width: 220px !important; }
           .contact-grid { flex-direction: column !important; }
           .footer-inner { flex-direction: column !important; text-align: center !important; gap: 16px !important; }
           .container { padding: 0 20px !important; }
@@ -188,7 +188,7 @@ export default function Portfolio() {
         @media (min-width: 769px) and (max-width: 1024px) {
           .container { padding: 0 32px !important; }
           .hero-pad { padding: 120px 32px 80px !important; }
-          .about-img img { width: 240px !important; height: auto !important; }
+          .about-img-inner { max-width: 240px !important; }
         }
         @media (min-width: 1025px) and (max-width: 1280px) { .container { padding: 0 40px !important; } }
         @media (min-width: 1281px) { .container { padding: 0 32px !important; } }
@@ -313,8 +313,9 @@ function AboutPage({ handleNav }) {
       <section style={{ ...styles.section, background: "#fff" }} className="section-pad">
         <div className="container" style={styles.container}>
           <div className="about-grid" style={{ display: "flex", gap: 60, flexWrap: "wrap", alignItems: "center" }}>
+            {/* Responsive image container */}
             <div className="about-img" style={{ position: "relative", flexShrink: 0 }}>
-              <div style={{ width: 260, height: 340, borderRadius: 24, background: "linear-gradient(160deg,#fce7f3,#ddd6fe)", overflow: "hidden", position: "relative" }}>
+              <div className="about-img-inner" style={{ maxWidth: 260, width: "100%", borderRadius: 24, background: "linear-gradient(160deg,#fce7f3,#ddd6fe)", overflow: "hidden", position: "relative", aspectRatio: "260/340" }}>
                 <img src="/eya_ (2).jpg" alt="Angel Fea Roma Cruz" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
               </div>
             </div>
